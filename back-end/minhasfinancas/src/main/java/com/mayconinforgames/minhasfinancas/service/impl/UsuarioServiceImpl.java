@@ -2,6 +2,7 @@ package com.mayconinforgames.minhasfinancas.service.impl;
 
 import org.springframework.stereotype.Service;
 
+import com.mayconinforgames.minhasfinancas.exception.RegraNegocioException;
 import com.mayconinforgames.minhasfinancas.model.entity.Usuario;
 import com.mayconinforgames.minhasfinancas.model.repository.UsuarioRepository;
 import com.mayconinforgames.minhasfinancas.service.UsuarioService;
@@ -30,8 +31,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public void validarEmail(String email) {
-		// TODO Auto-generated method stub
-
+		boolean existe = repository.existsByEmail(email);
+		if (existe) {
+			throw new RegraNegocioException("Já existe um usuário cadastrado com este e-mail");
+		}
 	}
 
 }
