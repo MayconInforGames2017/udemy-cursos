@@ -1,9 +1,12 @@
 package com.mayconinforgames.minhasfinancas.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.mayconinforgames.minhasfinancas.model.entity.Usuario;
 import com.mayconinforgames.minhasfinancas.model.repository.UsuarioRepository;
 import com.mayconinforgames.minhasfinancas.service.UsuarioService;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 
 	private UsuarioRepository repository;
