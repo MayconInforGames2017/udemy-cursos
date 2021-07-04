@@ -13,7 +13,6 @@ import com.mayconinforgames.minhasfinancas.model.entity.Usuario;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
-
 public class UsuarioRepositoryTest {
 
 	@Autowired
