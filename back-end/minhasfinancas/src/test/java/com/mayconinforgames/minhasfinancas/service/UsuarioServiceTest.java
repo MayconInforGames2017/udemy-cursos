@@ -1,18 +1,18 @@
 package com.mayconinforgames.minhasfinancas.service;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.RepositoryType;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import com.mayconinforgames.minhasfinancas.exception.RegraNegocioException;
 import com.mayconinforgames.minhasfinancas.model.entity.Usuario;
 import com.mayconinforgames.minhasfinancas.model.repository.UsuarioRepository;
 
 @SpringBootTest
-@ExtendWith(SpringExtension.class)
+@RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 public class UsuarioServiceTest {
 
@@ -22,7 +22,7 @@ public class UsuarioServiceTest {
 	@Autowired
 	UsuarioRepository repository;
 
-	@Test
+	@Test(expected = Test.None.class)
 	public void deveValidarEmail() {
 		// cenario
 		repository.deleteAll();
@@ -31,14 +31,12 @@ public class UsuarioServiceTest {
 		service.validarEmail("usuario@email.com");
 	}
 
-	// Os testes deste código não irão passar 
-	// precisa ser @Test(expected = RegraNegocioException.class)
-	@Test
+	@Test(expected = RegraNegocioException.class)
 	public void deveLancaErroAoValidarEmailCadastradoQExistirEmailCadastrado() {
 		// cenario
 		Usuario usuario = Usuario.builder().nome("usuario").email("usuario@email.com").build();
 		repository.save(usuario);
-		
+
 		// acao
 		service.validarEmail("usuario@email.com");
 	}
