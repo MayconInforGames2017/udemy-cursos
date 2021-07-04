@@ -17,19 +17,31 @@ import com.mayconinforgames.minhasfinancas.model.entity.Usuario;
 public class UsuarioRepositoryTest {
 
 	@Autowired
-	UsuarioRepository repository; 
-	
+	UsuarioRepository repository;
+
 	@Test
 	public void deveVerificarAExistenciaDeUmEmail() {
 		// cenário
 		Usuario usuario = Usuario.builder().nome("usuario").email("usuario@email.com").build();
 		repository.save(usuario);
-		
+
 		// ação - execução
 		boolean result = repository.existsByEmail("usuario@email.com");
-		
+
 		// verificação
 		Assertions.assertThat(result).isTrue();
 	}
-	
+
+	@Test
+	public void deveRetornarFalsoQuandoNaoHouverUsuarioCadastradoComEmail() {
+		// cenário
+		repository.deleteAll();
+
+		// ação - execução
+		boolean result = repository.existsByEmail("usuario@email.com");
+
+		// verificação
+		Assertions.assertThat(result).isFalse();
+	}
+
 }
