@@ -1,8 +1,11 @@
 package br.com.mayconinforgames.minhasfinancas.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.mayconinforgames.minhasfinancas.exception.ErroAutenticacao;
 import br.com.mayconinforgames.minhasfinancas.exception.RegraNegocioException;
 import br.com.mayconinforgames.minhasfinancas.model.entity.Usuario;
 import br.com.mayconinforgames.minhasfinancas.model.repository.UsuarioRepository;
@@ -20,8 +23,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Usuario autenticar(String email, String senha) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+		
+		if (!usuario.isPresent()) {
+			throw new ErroAutenticacao("Usuário não encontrado para o emal informado.");
+		}
+		
+		if (!usuario.get().getSenha().equals(senha)) {
+			throw new ErroAutenticacao("Senha inválida.");
+		}
+		
+		return usuario.get();
 	}
 
 	@Override
