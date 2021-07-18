@@ -21,7 +21,7 @@ public class UsuarioRepositoryTest {
 	UsuarioRepository usuarioRepository;
 	
 	@Test
-	public void deveVerificarExistenciaDeEmail() {
+	public void deveVerificarExistenciaDeUmEmail() {
 		// cenario
 		Usuario usuario = Usuario.builder().nome("usuario").email("usuario.@email.com").build();
 		usuarioRepository.save(usuario);
@@ -32,6 +32,18 @@ public class UsuarioRepositoryTest {
 		// verificação
 		Assertions.assertThat(result).isTrue();
 		
+	}
+	
+	@Test
+	public void deveRetornarFalsoQuandoNaoHouverUsuarioCadastradoComEmail() {
+		// cenario
+		usuarioRepository.deleteAll();
+		
+		// ação
+		boolean result = usuarioRepository.existsByEmail("usuario.@email.com");
+	
+		// verificacao
+		Assertions.assertThat(result).isFalse();
 	}
 	
 }
