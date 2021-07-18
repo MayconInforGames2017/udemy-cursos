@@ -1,4 +1,4 @@
-package br.mayconinforgames.minhasfinancas.model.entity;
+package br.com.mayconinforgames.minhasfinancas.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

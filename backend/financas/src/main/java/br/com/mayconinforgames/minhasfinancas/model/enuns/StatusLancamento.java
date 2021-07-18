@@ -1,4 +1,4 @@
-package br.mayconinforgames.minhasfinancas.model.enuns;
+package br.com.mayconinforgames.minhasfinancas.model.enuns;
 
 public enum StatusLancamento {
 	

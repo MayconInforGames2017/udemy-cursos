@@ -1,4 +1,4 @@
-package br.mayconinforgames.minhasfinancas.model.entity;
+package br.com.mayconinforgames.minhasfinancas.model.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -17,8 +17,8 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
-import br.mayconinforgames.minhasfinancas.model.enuns.StatusLancamento;
-import br.mayconinforgames.minhasfinancas.model.enuns.TipoLancamento;
+import br.com.mayconinforgames.minhasfinancas.model.enuns.StatusLancamento;
+import br.com.mayconinforgames.minhasfinancas.model.enuns.TipoLancamento;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
