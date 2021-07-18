@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import br.com.mayconinforgames.minhasfinancas.exception.RegraNegocioException;
 import br.com.mayconinforgames.minhasfinancas.model.entity.Usuario;
 import br.com.mayconinforgames.minhasfinancas.model.repository.UsuarioRepository;
-import br.com.mayconinforgames.minhasfinancas.service.UsuarioService;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
